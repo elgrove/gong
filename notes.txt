@@ -1,0 +1,29 @@
+CLI commands
+---
+- start <name> 
+(quickstarts template project)
+- build 
+(generates site)
+- serve 
+(runs generated site )
+
+
+Site structure
+---
+Homepage w/ blogposts
+Pages - individual pages built from one markdown file
+Posts - list of blog posts from a folder of markdown files
+
+
+
+Website building process
+---
+Read markdown filenames
+for file in filesnames read file
+Take parameters from --- --- section
+Take paras from main body
+Use jinja.Template.render to output html
+
+
+Website serving process
+---
