@@ -18,8 +18,7 @@
             <li class="post">
                 <h2><a href="/small-text">{{ post.title }}</a></h2>
                 <time datetime="2019-03-18T00:00:00+00:00" class="by-line">{{ post.datetime }}</time>
-                <p>{{ post.content }}
-                </p>
+                {{ post.content|safe }}
             </li>
             {% endfor %}
 
