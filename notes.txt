@@ -1,3 +1,6 @@
+https://github.com/sunainapai/makesite
+
+
 CLI commands
 ---
 - start <name> 
@@ -13,8 +16,7 @@ Site structure
 Homepage w/ blogposts
 Pages - individual pages built from one markdown file
 Posts - list of blog posts from a folder of markdown files
-
-
+Recipes - ??????????????????????????????
 
 Website building process
 ---
