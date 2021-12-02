@@ -34,7 +34,7 @@ for f, p in zip(post_files, posts):
 html_template_string = template.render(posts=posts_web)
 
 
-with open("build/index.html", "w") as f:
-    f.write(html_template_string)
-
-os.system("cp -r static/ build/")
+def build():
+    with open("build/index.html", "w") as f:
+        f.write(html_template_string)
+    os.system("cp -r static/ build/") # must replace with cross-platform copy
