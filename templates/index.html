@@ -2,13 +2,6 @@
 
 {% block content %}
 
-<header id="header">
-    <a href="/">
-        <h1>Gong</h1>
-    </a>
-</header>
-
-
 <div id="container">
 
     <main>
@@ -16,8 +9,8 @@
         <ul id="posts">
             {% for post in posts %}
             <li class="post">
-                <h2><a href="/small-text">{{ post.title }}</a></h2>
-                <time datetime="2019-03-18T00:00:00+00:00" class="by-line">{{ post.datetime }}</time>
+                <h2><a href="/posts/{{post.path}}.html">{{ post.title }}</a></h2>
+                <time>{{ post.datetime }}</time>
                 {{ post.content|safe }}
             </li>
             {% endfor %}

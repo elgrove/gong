@@ -16,7 +16,6 @@ Site structure
 Homepage w/ blogposts
 Pages - individual pages built from one markdown file
 Posts - list of blog posts from a folder of markdown files
-Recipes - ??????????????????????????????
 
 Website building process
 ---
@@ -29,3 +28,10 @@ Use jinja.Template.render to output html
 
 Website serving process
 ---
+
+
+HOW TO PACKAGE AS A CLI / PYTHON MODULE
+
+ADD JS CODE SYNTAX HIGHLIUGHITNG - DONE
+
+NEED TO FIX FOOTER CSS

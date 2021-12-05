@@ -8,33 +8,50 @@ import mistune
 md2html = mistune.Markdown()
 
 env = Environment(loader=PackageLoader("main"), autoescape=select_autoescape)
-template = env.get_template("index.html")
-
-post_files = ["posts/" + f for f in os.listdir("posts")]
-
-posts = [frontmatter.load(p) for p in post_files]
-
-# cycle through posts and create list of dicts called posts
+home_template = env.get_template("index.html")
+post_template = env.get_template("post.html")
 
 
-posts_web = []
+def get_posts():
+    # cycle through posts and create list of dicts called posts
+    post_files = ["posts/" + f for f in os.listdir("posts")]
+
+    load_posts = [frontmatter.load(p) for p in post_files]
+
+    posts = []
+
+    for f, p in zip(post_files, load_posts):
+        d = dict(
+            filename=f[6:],
+            path=f[6:-3],
+            date=f[6:16],  # take date from filename
+            template=p.metadata["template"],
+            title=p.metadata["title"],
+            subtitle=p.metadata["subtitle"],
+            content=md2html(p.content),
+        )
+        posts.append(d)
+
+    return posts
 
 
-for f, p in zip(post_files, posts):
-    d = dict(
-        date=f[6:16],  # take date from filename
-        template=p.metadata["template"],
-        title=p.metadata["title"],
-        subtitle=p.metadata["subtitle"],
-        content=md2html(p.content),
-    )
-    posts_web.append(d)
-
-
-html_template_string = template.render(posts=posts_web)
-
-
-def build():
+def build_home(posts):
+    html_template_string = home_template.render(posts=posts)
+    os.system("rm -rf build/*")
     with open("build/index.html", "w") as f:
         f.write(html_template_string)
-    os.system("cp -r static/ build/") # must replace with cross-platform copy
+    os.system("cp -r static/ build/")
+
+
+def build_posts(posts):
+    os.system("mkdir build/posts")
+    for post in posts:
+        html_template_string = post_template.render(post=post)
+        with open(f"build/posts/{post['path']}.html", "w") as f:
+            f.write(html_template_string)
+
+
+posts = get_posts()
+
+build_home(posts)
+build_posts(posts)
