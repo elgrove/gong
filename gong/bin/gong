@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+# if arg is init, create site skeleton
+# if arg is build, check skeleton exists, build, if not then error
+################################################################################### if arg is serve, start server with site directory
+
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "init", nargs="*", help="Initialise gong blog skeleton in the current directory"
+)
+parser.add_argument(
+    "build", nargs="*", help="Build from gong blog skeleton in the current directory"
+)
+parser.parse_args()
+args = parser.parse_args()
+
+if args.build:
+    print("build")
