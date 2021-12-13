@@ -7,6 +7,7 @@ import mistune
 
 md2html = mistune.Markdown()
 
+# packageloader wants the name of the directory in which to look for the template directory
 env = Environment(loader=PackageLoader("build"), autoescape=select_autoescape)
 home_template = env.get_template("index.html")
 post_template = env.get_template("post.html")
@@ -51,7 +52,15 @@ def build_posts(posts):
             f.write(html_template_string)
 
 
-if __name__ == "__main__":
+def build(posts):
     posts = get_posts()
-    build_home(posts)
-    build_posts(posts)
+    html_template_string = home_template.render(posts=posts)
+    os.system("rm -rf build/*")
+    with open("build/index.html", "w") as f:
+        f.write(html_template_string)
+    os.system("cp -r static/ build/")
+    os.system("mkdir build/posts")
+    for post in posts:
+        html_template_string = post_template.render(post=post)
+        with open(f"build/posts/{post['path']}.html", "w") as f:
+            f.write(html_template_string)

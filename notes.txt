@@ -30,9 +30,24 @@ Website serving process
 ---
 
 
+
 HOW TO PACKAGE AS A CLI / PYTHON MODULE
 
 ADD JS CODE SYNTAX HIGHLIUGHITNG - DONE
 
 NEED TO FIX FOOTER CSS... STILL
 
+
+
+CLI process
+
+module gong lives on path
+initialise folder with `gong init mysite .` 
+    this will init the templates, static and example posts
+    use argparse to take the folder dir and turn into an absolute path
+build site with `gong build`
+    this will act on the `_posts` folder in the current terminal folder
+    it will build the site and drop into the mysite folder in this directory
+start development server with `gong serve`
+    this will launch a flask server using the index.html in the mysite dir
+    it will restart when it detects file changes
