@@ -4,18 +4,23 @@
 # if arg is build, check skeleton exists, build, if not then error
 ################################################################################### if arg is serve, start server with site directory
 
+import typer
 
-import argparse
+# from gong import init, build
+import os
 
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "init", nargs="*", help="Initialise gong blog skeleton in the current directory"
-)
-parser.add_argument(
-    "build", nargs="*", help="Build from gong blog skeleton in the current directory"
-)
-parser.parse_args()
-args = parser.parse_args()
+app = typer.Typer()
 
-if args.build:
-    print("build")
+
+@app.command()
+def init():
+    typer.echo("init")
+
+
+@app.command()
+def build():
+    typer.echo("build")
+
+
+if __name__ == "__main__":
+    app()
