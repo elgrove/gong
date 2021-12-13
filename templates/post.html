@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% set template = 'post' %}
+
 {% block content %}
 
 <div id="container">
@@ -12,7 +14,7 @@
             {% endif %}
             <time>{{ post.date }}</time>
             <div class="content">
-                {{ post.content }}
+                {{ post.content|safe }}
             </div>
         </article>
 

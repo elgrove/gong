@@ -7,7 +7,7 @@ import mistune
 
 md2html = mistune.Markdown()
 
-env = Environment(loader=PackageLoader("main"), autoescape=select_autoescape)
+env = Environment(loader=PackageLoader("build"), autoescape=select_autoescape)
 home_template = env.get_template("index.html")
 post_template = env.get_template("post.html")
 
@@ -51,7 +51,7 @@ def build_posts(posts):
             f.write(html_template_string)
 
 
-posts = get_posts()
-
-build_home(posts)
-build_posts(posts)
+if __name__ == "__main__":
+    posts = get_posts()
+    build_home(posts)
+    build_posts(posts)

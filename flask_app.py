@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from datetime import datetime as dt
-from main import get_posts
+from build import get_posts
 
 app = Flask(
     __name__, static_url_path="", static_folder="static", template_folder="templates"

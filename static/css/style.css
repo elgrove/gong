@@ -393,11 +393,6 @@
     padding: 0.6667em 0; 
   }
   
-  #wrap {
-    min-height: 100%;
-    position: relative;
-    padding-bottom: 105px; }
-  
   .footer {
     padding: 6px 0;
     background-color: #013a63;
@@ -406,4 +401,16 @@
     position: absolute;
     width: 100%;
     /* bottom: 0;  */
+  }
+
+  html, body {
+    height: 100% !important; }
+  
+  .wrapper {
+    min-height: 100%;
+    margin-bottom: -30px;
+  }
+
+  .push {
+    height: 30px;
   }
